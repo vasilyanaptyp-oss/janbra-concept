@@ -173,15 +173,14 @@ export async function init(box, opts = {}) {
     act.sort((x, y) => y.p.pr[0] - x.p.pr[0]);
     for (let i = 0; i < co.length; i++) {
       const el = co[i], a = act[i];
-      if (!a || a.o <= 0.02) { el.style.opacity = '0'; el.style.visibility = 'hidden'; continue; }
+      /* silt on kas täiesti nähtav või peidus: ei mingeid poolläbipaistvaid tekste ega üksikuid punkte */
+      if (!a || a.o < 0.5) { el.style.opacity = '0'; el.style.visibility = 'hidden'; continue; }
       const obj = a.p.obj; obj.updateWorldMatrix(true, false);
       wv.copy(a.p.anchor).applyMatrix4(obj.matrixWorld).project(camera);
       const x = (wv.x + 1) / 2 * bw, y = (1 - wv.y) / 2 * bh;
       el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
       el.classList.toggle('left', x > bw * 0.58);
       el.lastChild.textContent = a.p.label;
-      /* tekst on kas täiesti nähtav või peidus (kontrast jääb alati korras), ainult punkt hajub */
-      el.firstChild.style.opacity = a.o.toFixed(2); el.lastChild.style.opacity = a.o >= 0.5 ? '1' : '0';
       el.style.opacity = '1'; el.style.visibility = 'visible';
     }
   };
