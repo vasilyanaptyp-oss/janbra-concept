@@ -49,18 +49,18 @@
         .from('#p-door-r', { x: 210, rotation: 8, transformOrigin: '100% 50%', duration: 0.3 }, 0.62)
         .from('#p-hd-l', { x: -260, duration: 0.14 }, 0.9)
         .from('#p-hd-r', { x: 260, duration: 0.14 }, 0.9)
-        .from('#p-dim', { autoAlpha: 0, duration: 0.06 }, 0.94);
+        .from('#p-dim', { autoAlpha: 0, duration: 0.06, ease: 'steps(1)' }, 0.94);
     };
     /* pealkirjad: kolm lauset kolme faasi peale (mõlemas režiimis) */
     /* seitse sammu samas järjekorras nagu 3D-sceenis; üks samm korraga, ilma kattuvate üleminekuteta */
     var S = [[0, 0.15], [0.15, 0.28], [0.28, 0.38], [0.38, 0.6], [0.6, 0.69], [0.69, 0.88], [0.88, 1]];
     tl.set('#cap0', { autoAlpha: 1, y: 0 }, 0);
     for (var i = 0; i < S.length; i++) {
-      if (i > 0) tl.fromTo('#cap' + i, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.025 }, S[i][0]);
-      if (i < S.length - 1) tl.to('#cap' + i, { autoAlpha: 0, y: -4, duration: 0.02 }, S[i][1] - 0.02);
+      if (i > 0) tl.fromTo('#cap' + i, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.025, ease: 'steps(1)' }, S[i][0]).to('#cap' + i, { y: 0, duration: 0.03, ease: 'power2.out' }, S[i][0] + 0.025);
+      if (i < S.length - 1) tl.to('#cap' + i, { autoAlpha: 0, duration: 0.001, ease: 'steps(1)' }, S[i][1] - 0.001);
     }
     if (want3d) {
-      tl.fromTo('#dim3d', { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.06 }, 0.94); /* ajajoon lõpeb täpselt 1.0 peal, nagu 3D-progress */
+      tl.fromTo('#dim3d', { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.02, ease: 'steps(1)' }, 0.95).to('#dim3d', { y: 0, duration: 0.03 }, 0.97); /* ajajoon lõpeb täpselt 1.0 peal, nagu 3D-progress */
       /* moodul laaditakse alles pärast load'i, et fondid ja esimene ekraan ees ei ootaks; vana parser ei näe import() süntaksit */
       var dynImport = function (u) { return new Function('u', 'return import(u)')(u); };
       var load3d = function () {
