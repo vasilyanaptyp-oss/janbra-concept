@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>JanBra OÜ. Mööbli ja puusepatoodete paigaldus Harjumaal</title>
+<meta name="description" content="JanBra OÜ paneb kokku ja paigaldab mööbli ja ehituspuusepatooted ning ehitab kaubandus- ja äripindu. Kuusalu vald, Harjumaa, alates 2012. Tel +372 524 3278.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="et_EE">
+<meta property="og:site_name" content="JanBra OÜ">
+<meta property="og:title" content="JanBra OÜ. Mööbli ja puusepatoodete paigaldus Harjumaal">
+<meta property="og:description" content="Mööbli paigaldus, ehituspuusepatoodete paigaldus, kaubandus- ja äripindade ehitus. Kuusalu vald, alates 2012. Tel +372 524 3278.">
+<meta property="og:url" content="https://vasilyanaptyp-oss.github.io/janbra-concept/">
+<meta property="og:image" content="https://vasilyanaptyp-oss.github.io/janbra-concept/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#F4F2EE">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/familjen-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/familjen-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* JanBra OÜ. Kontseptsioon. Familjen Grotesk + DM Mono, kobalt + tamm, GSAP ScrollTrigger ainult kahe lava jaoks. */
+@font-face{font-family:"Familjen Grotesk";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/familjen-400-700-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Familjen Grotesk";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/familjen-400-700-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dmmono-400-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dmmono-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+:root{
+  --paper:#F4F2EE; --paper-2:#EAE6DF; --white:#FFFFFF;
+  --ink:#1B1D1F; --ink-2:#5C6166; --line:#D6D2CA; --line-2:#E6E2DB;
+  --blue:#1F4FD8; --blue-2:#163FB0; --blue-soft:#E4EAFB;
+  --oak:#C9A575; --oak-2:#A9835A; --walnut:#6B4A2E; --birch:#E9E1D3;
+  --font:"Familjen Grotesk","Segoe UI",Roboto,system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.22,.8,.2,1);
+  --r:18px; --pad:clamp(18px,4.5vw,40px); --max:1160px; --hdr:60px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hdr) + 12px);background:var(--paper)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,svg{max-width:100%;height:auto;display:block}
+[hidden]{display:none!important}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.02;overflow-wrap:anywhere}
+p{margin:0 0 1em}
+.mono{font-family:var(--mono);font-size:.8125rem;letter-spacing:.02em;color:var(--ink-2)}
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;z-index:60;padding:10px 14px;background:var(--ink);color:#fff;border-radius:8px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* päis */
+.hdr{position:sticky;top:0;z-index:30;height:var(--hdr);background:var(--paper);border-bottom:1px solid var(--line-2)}
+.hdr-in{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:inline-flex;align-items:baseline;gap:10px;color:inherit;text-decoration:none;min-height:44px;line-height:44px}
+.brand b{font-size:1.35rem;font-weight:700;letter-spacing:-.03em}
+.brand span{font-family:var(--mono);font-size:.75rem;color:var(--ink-2);letter-spacing:.04em}
+@media (max-width:379px){.brand span{display:none}}
+.hdr-act{display:flex;align-items:center;gap:8px}
+.hdr .link{display:none}
+@media (min-width:760px){.hdr .link{display:inline-flex}}
+
+/* nupud */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 22px;border-radius:999px;font:500 1rem/1.1 var(--font);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform 160ms var(--ease),background-color 160ms ease,border-color 160ms ease}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ghost{background:var(--white);color:var(--ink);border-color:var(--line)}
+@media (hover:hover) and (pointer:fine){.btn-blue:hover{background:var(--blue-2)}.btn-ink:hover{background:#000}.btn-ghost:hover{border-color:var(--ink)}}
+.btn-lg{min-height:54px;padding:14px 26px;font-size:1.0625rem}
+.link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 6px;color:var(--blue);font-weight:500;text-decoration:none}
+.link svg{width:16px;height:16px}
+@media (hover:hover) and (pointer:fine){.link:hover{text-decoration:underline;text-underline-offset:4px}}
+
+/* LAVA: kapp paneb end kokku, kui keritakse */
+.stage-wrap{position:relative}
+.stage{position:relative;min-height:calc(100svh - var(--hdr));display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;padding:18px var(--pad) 22px;max-width:var(--max);margin:0 auto;overflow-x:clip}
+.stage-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.stage-top .mono{margin:0}
+.stage-top .mono:last-child{white-space:nowrap}
+h1{font-size:clamp(2.1rem,6.4vw,4.4rem);letter-spacing:-.035em;line-height:.98;max-width:22ch;text-wrap:balance}
+.stage-mid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:center;min-height:0}
+.cab{width:100%;max-width:560px;margin:0 auto;max-height:38svh;overflow:visible}
+.caps{position:relative;min-height:3.2em;font-size:clamp(1.05rem,2.6vw,1.45rem);line-height:1.35;color:var(--ink);max-width:30rem}
+.cap{margin:0;position:absolute;inset:0;opacity:0}
+.cap:last-child{position:relative;opacity:1}
+.js.gs .cap{position:absolute;opacity:0;visibility:hidden}
+.js.gs .cap:last-child{position:absolute}
+.stage-bot{display:grid;gap:14px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta .btn{flex:1 1 auto}
+.ruler{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;font-family:var(--mono);font-size:.75rem;color:var(--ink-2)}
+.ruler-track{position:relative;height:14px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 10px) left bottom/100% 5px no-repeat,repeating-linear-gradient(90deg,var(--ink-2) 0 1px,transparent 1px 50px) left bottom/100% 9px no-repeat}
+.ruler-fill{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--blue);transform-origin:left;transform:scaleX(1)}
+.js.gs .ruler-fill{transform:scaleX(0)}
+@media (min-width:900px){
+  .stage{padding-top:24px}
+  .stage-mid{grid-template-columns:5fr 6fr;gap:40px}
+  .stage-mid .caps{order:1}
+  .cab{order:2;max-height:48svh;max-width:none}
+  .caps{font-size:1.5rem;max-width:22rem}
+  .cta .btn{flex:0 0 auto}
+  .stage-bot{grid-template-columns:auto 1fr;align-items:center;gap:28px}
+}
+/* kapi osad */
+.cab .wood{fill:url(#oak)}
+.cab .wood2{fill:url(#oak2)}
+.cab .dark{fill:var(--walnut)}
+.cab .back{fill:var(--birch)}
+.cab .edge{stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.cab .handle{fill:var(--ink)}
+.cab .shadow{fill:#000;opacity:.08}
+.cab .dim{font-family:var(--mono);font-size:13px;fill:var(--ink-2)}
+.cab .dimline{stroke:var(--blue);stroke-width:1.2}
+
+/* üldised sektsioonid */
+.section{padding:84px 0}
+@media (min-width:900px){.section{padding:120px 0}}
+.sec-title{font-size:clamp(2rem,5.6vw,3.6rem);letter-spacing:-.03em;margin-bottom:12px}
+.sec-sub{font-size:clamp(1.0625rem,2vw,1.3rem);color:var(--ink-2);max-width:36rem;margin:0 0 30px}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv[style*="--i"]{transition-delay:calc(var(--i) * 80ms)}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+
+/* TEENUSED: lint, mis liigub külgsuunas */
+.svc{padding:0}
+.svc-wrap{position:relative;padding:84px 0}
+.track{display:block}
+.rail{display:flex;gap:14px;padding:0 var(--pad);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.card{flex:0 0 82vw;scroll-snap-align:start;background:var(--white);border:1px solid var(--line-2);border-radius:var(--r);padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.card.lead{background:transparent;border:0;border-radius:0;padding:0 var(--pad) 28px;min-height:0;justify-content:flex-start}
+.card.grain{background:var(--white) url(img/grain.svg) center/cover no-repeat}
+.card h3{font-size:1.6rem;letter-spacing:-.025em;margin-bottom:10px}
+.card p{color:var(--ink-2);margin:0}
+.card .num{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);margin-bottom:22px}
+.card ul{margin:14px 0 0;padding:0;list-style:none;color:var(--ink)}
+.card li{padding:6px 0;border-top:1px solid var(--line-2)}
+.card li:first-child{border-top:0}
+.card .ico{width:34px;height:34px;color:var(--blue);margin-bottom:18px}
+@media (min-width:900px){
+  .svc-wrap{padding:0;height:calc(100svh - var(--hdr));display:flex;align-items:center;overflow:hidden}
+  .track{display:flex;gap:18px;padding:0 var(--pad);will-change:transform}
+  .rail{flex:0 0 auto;gap:18px;padding:0;overflow:visible;scroll-snap-type:none}
+  .card{flex:0 0 36vw;min-height:58svh;padding:32px 30px}
+  .card.lead{flex:0 0 32vw;min-height:58svh;padding:32px 30px 32px 0}
+  .card h3{font-size:1.9rem}
+}
+@media (min-width:900px) and (prefers-reduced-motion:reduce){
+  .svc-wrap{height:auto;padding:120px 0;overflow:visible}
+  .track{flex-wrap:wrap}
+  .card.lead{flex:1 1 100%;min-height:0;padding:0 0 12px}
+  .rail{flex:1 1 100%;flex-wrap:wrap}
+  .rail .card{flex:1 1 40%;min-height:0}
+}
+
+/* KÜSI PAKKUMIST: nelja sammu viisard */
+.wiz{background:var(--white);border:1px solid var(--line-2);border-radius:24px;padding:24px 20px}
+.wiz-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.wiz-prog{position:relative;height:10px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 8px) left bottom/100% 4px no-repeat,repeating-linear-gradient(90deg,var(--ink-2) 0 1px,transparent 1px 25% ) left bottom/100% 8px no-repeat;margin-bottom:22px}
+.wiz-bar{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--blue);transform-origin:left;transform:scaleX(.25);transition:transform .5s var(--ease)}
+.steps{position:relative}
+.wstep{display:none}
+.wstep.on{display:block}
+.js .wstep.on{animation:stepin .45s var(--ease)}
+@keyframes stepin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.js .wstep.on{animation:none}}
+.wstep legend{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;padding:0;margin:0 0 14px}
+.wstep fieldset{border:0;padding:0;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.chip-face{display:inline-flex;align-items:center;min-height:46px;padding:10px 18px;border-radius:999px;background:var(--paper);border:1px solid var(--line-2);font-weight:500;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease,transform 160ms var(--ease)}
+.chip:active .chip-face{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.chip-face:hover{border-color:var(--ink)}}
+.chip input:checked + .chip-face{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip input:focus-visible + .chip-face{outline:3px solid var(--blue);outline-offset:3px}
+.wiz-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line-2)}
+.summary{display:grid;gap:8px;margin:0 0 18px;padding:0}
+.summary div{display:grid;grid-template-columns:5.5rem 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line-2)}
+.summary div:first-child{border-top:0}
+.summary dt{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);padding-top:3px}
+.summary dd{margin:0;font-weight:500}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.acts .btn-blue{grid-column:1/-1}
+.wiz-note{margin:14px 0 0;font-size:.9rem;color:var(--ink-2)}
+@media (min-width:900px){
+  .wiz-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start}
+  .wiz-grid .sec-sub{margin-bottom:0}
+  .wiz{padding:32px 32px 28px;position:sticky;top:calc(var(--hdr) + 20px)}
+  .acts{display:flex}
+  .acts .btn-blue{grid-column:auto}
+}
+
+/* KUIDAS KÄIB: mõõdulint joonistub */
+.proc{position:relative}
+.proc-list{list-style:none;margin:0;padding:0;display:grid;gap:22px;position:relative}
+.proc-list::before{content:"";position:absolute;left:19px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.tape{position:absolute;left:18px;top:14px;height:calc(100% - 28px);width:4px;border-radius:2px;background:var(--blue);transform-origin:top}
+.js .tape{transform:scaleY(0);transition:transform 1.1s var(--ease)}
+.js .proc.in .tape{transform:scaleY(1)}
+.pstep{position:relative;padding-left:60px}
+.pstep .n{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--white);border:2px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.85rem;transition:border-color .4s ease,background-color .4s ease,color .4s ease}
+.js .proc.in .pstep .n{border-color:var(--blue);background:var(--blue);color:#fff}
+.js .proc.in .pstep:nth-child(2) .n{transition-delay:.25s}.js .proc.in .pstep:nth-child(3) .n{transition-delay:.5s}.js .proc.in .pstep:nth-child(4) .n{transition-delay:.75s}
+.pstep h3{font-size:1.35rem;margin:6px 0 6px;letter-spacing:-.02em}
+.pstep p{margin:0;color:var(--ink-2)}
+@media (min-width:900px){
+  .proc-list{grid-template-columns:repeat(4,1fr);gap:28px}
+  .proc-list::before{left:20px;right:20px;top:19px;bottom:auto;height:2px;width:auto}
+  .tape{left:20px;top:18px;width:calc(100% - 40px);height:4px;transform-origin:left}
+  .js .tape{transform:scaleX(0)}
+  .js .proc.in .tape{transform:scaleX(1)}
+  .pstep{padding-left:0;padding-top:60px}
+}
+
+/* FAKTID */
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{background:var(--white);border:1px solid var(--line-2);border-radius:var(--r);padding:22px 20px}
+.facts b{display:block;font-family:var(--mono);font-weight:400;font-size:2rem;letter-spacing:-.02em;color:var(--ink)}
+.facts span{color:var(--ink-2)}
+@media (min-width:640px){.facts{grid-template-columns:repeat(3,1fr)}}
+
+/* KONTAKT */
+.contact{display:grid;gap:14px}
+.ctile{background:var(--white);border:1px solid var(--line-2);border-radius:var(--r);padding:26px 22px}
+.clist{list-style:none;margin:0;padding:0}
+.clist li{display:flex;align-items:center;gap:14px;min-height:48px;font-size:1.0625rem}
+.clist svg{width:20px;height:20px;flex:none;color:var(--blue)}
+.clist a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:none}
+@media (hover:hover) and (pointer:fine){.clist a:hover{text-decoration:underline;text-underline-offset:4px}}
+.req{margin:0;display:grid;gap:12px}
+.req div{display:grid;gap:2px;padding-top:10px;border-top:1px solid var(--line-2)}
+.req div:first-child{border-top:0;padding-top:0}
+.req dt{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);letter-spacing:.03em}
+.req dd{margin:0;font-weight:500}
+@media (min-width:900px){.contact{grid-template-columns:1fr 1fr}}
+
+/* jalus */
+.ftr{max-width:var(--max);margin:0 auto;padding:24px var(--pad) 48px;display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;color:var(--ink-2);font-size:.875rem;border-top:1px solid var(--line-2)}
+.ftr p{margin:0}
+</style>
+</head>
+<body>
+<a class="skip" href="#pakkumine">Sisu juurde</a>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top"><b>JanBra</b><span>OÜ · Kuusalu</span></a>
+    <div class="hdr-act">
+      <a class="link" href="#pakkumine">Küsi pakkumist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a class="btn btn-blue" href="tel:+3725243278"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span>Helista</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="stage-wrap" id="lava">
+  <div class="stage" id="stage">
+    <div class="stage-top">
+      <p class="mono">JanBra OÜ · alates 2012 · Kuusalu vald, Harjumaa</p>
+      <p class="mono" id="stage-pct" aria-hidden="true">0 %</p>
+    </div>
+    <h1>Mööbli ja puusepatoodete paigaldus Harjumaal.</h1>
+    <div class="stage-mid">
+      <div class="caps" aria-live="polite">
+        <p class="cap" id="cap0">Mööbel saabub karpides ja detailidena.</p>
+        <p class="cap" id="cap1">Paneme kokku joonise järgi, iga kruvi omal kohal.</p>
+        <p class="cap" id="cap2">Paigaldame paika ja kontrollime üle.</p>
+      </div>
+      <svg class="cab" id="cab" viewBox="0 0 620 560" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="oak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D4B283"/><stop offset="1" stop-color="#BE9767"/></linearGradient>
+          <linearGradient id="oak2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9A575"/><stop offset="1" stop-color="#B08A5C"/></linearGradient>
+        </defs>
+        <ellipse class="shadow" cx="310" cy="520" rx="240" ry="14"/>
+        <rect id="p-back" class="back edge" x="110" y="80" width="400" height="380"/>
+        <rect id="p-shelf1" class="wood2 edge" x="112" y="170" width="396" height="12"/>
+        <rect id="p-shelf2" class="wood2 edge" x="112" y="270" width="396" height="12"/>
+        <rect id="p-shelf3" class="wood2 edge" x="112" y="370" width="396" height="12"/>
+        <rect id="p-top" class="wood edge" x="92" y="60" width="436" height="20" rx="2"/>
+        <rect id="p-bottom" class="wood edge" x="92" y="460" width="436" height="20" rx="2"/>
+        <rect id="p-plinth" class="dark edge" x="104" y="480" width="412" height="26" rx="2"/>
+        <rect id="p-side-l" class="wood edge" x="92" y="60" width="20" height="420" rx="2"/>
+        <rect id="p-side-r" class="wood edge" x="508" y="60" width="20" height="420" rx="2"/>
+        <rect id="p-door-l" class="wood edge" x="114" y="82" width="194" height="376" rx="2"/>
+        <rect id="p-door-r" class="wood edge" x="312" y="82" width="194" height="376" rx="2"/>
+        <rect id="p-hd-l" class="handle" x="292" y="250" width="6" height="44" rx="3"/>
+        <rect id="p-hd-r" class="handle" x="322" y="250" width="6" height="44" rx="3"/>
+        <g id="p-dim">
+          <path class="dimline" d="M92 30h436M92 24v12M528 24v12"/>
+          <text class="dim" x="272" y="20">1200 mm</text>
+          <path class="dimline" d="M560 60v420M554 60h12M554 480h12"/>
+          <text class="dim" x="572" y="276">2100</text>
+        </g>
+      </svg>
+    </div>
+    <div class="stage-bot">
+      <div class="cta">
+        <a class="btn btn-blue btn-lg" href="tel:+3725243278"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span>Helista +372 524 3278</span></a>
+        <a class="btn btn-ghost btn-lg" href="#pakkumine">Küsi pakkumist</a>
+      </div>
+      <div class="ruler" aria-hidden="true"><span>0</span><div class="ruler-track"><div class="ruler-fill" id="ruler-fill"></div></div><span>100 mm</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc" id="teenused">
+  <div class="svc-wrap" id="svc-wrap">
+    <div class="track" id="track">
+      <div class="card lead">
+        <p class="mono">Teenused</p>
+        <h2 class="sec-title">Kolm asja, mida teeme hästi.</h2>
+        <p class="sec-sub" style="margin-bottom:0">Kokkupanek ja paigaldus kohapeal, puusepatööd ja äripindade ehitus. Kuusalust üle Harjumaa.</p>
+      </div>
+      <div class="rail" id="rail" role="region" aria-label="Teenuste loend" tabindex="0">
+      <article class="card grain rv" style="--i:0">
+        <div><p class="num">01</p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0zm2 2v2m16-2v2M12 4v9"/></svg><h3>Mööbli paigaldus</h3><p>Kokkupanek ja paigaldus kohapeal, joonise järgi.</p></div>
+        <ul><li>Köögid ja kapid</li><li>Garderoobid</li><li>Kontori- ja kaupluse mööbel</li></ul>
+      </article>
+      <article class="card rv" style="--i:1">
+        <div><p class="num">02</p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M10 21H2m8-18H7a2 2 0 0 0-2 2v16m9-9h.01"/><path d="M19 21V5a2 2 0 0 0-1.675-1.974l-6.163-1.013A1 1 0 0 0 10 3v18a1 1 0 0 0 1.124.992zm3 0h-3"/></svg><h3>Ehituspuusepatoodete paigaldus</h3><p>Puusepatooted, mis peavad istuma millimeetri täpsusega.</p></div>
+        <ul><li>Uksed ja aknad</li><li>Trepid</li><li>Seinapaneelid ja liistud</li></ul>
+      </article>
+      <article class="card rv" style="--i:2">
+        <div><p class="num">03</p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg><h3>Kaubandus- ja äripindade ehitus</h3><p>Kaupluste, büroode ja teenindussaalide ehitus- ja sisustustööd.</p></div>
+        <ul><li>Kauplused</li><li>Bürood</li><li>Teenindussaalid</li></ul>
+      </article>
+      <article class="card rv" style="--i:3">
+        <div><p class="num">04</p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zm1 .27V12"/><path d="M3.29 7 12 12l8.71-5M7.5 4.27l9 5.15"/></svg><h3>Mööbli müük</h3><p>Vajadusel hangime mööbli ja paigaldame selle samal käigul.</p></div>
+        <ul><li>Mööbel koos paigaldusega</li><li>Üks partner algusest lõpuni</li></ul>
+      </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pakkumine">
+  <div class="wrap wiz-grid">
+    <div>
+      <p class="mono">Küsi pakkumist</p>
+      <h2 class="sec-title">Neli valikut ja päring on valmis.</h2>
+      <p class="sec-sub">Vastate neljale küsimusele, meie paneme päringu kokku. Saadate selle e-kirja või sõnumiga, joonised ja fotod lisate juurde.</p>
+    </div>
+    <form class="wiz" id="wiz" novalidate>
+      <div class="wiz-head"><p class="mono" id="wiz-step">Samm 1 / 4</p><p class="mono" id="wiz-hint">Mis on vaja teha?</p></div>
+      <div class="wiz-prog" aria-hidden="true"><div class="wiz-bar" id="wiz-bar"></div></div>
+      <div class="steps">
+        <div class="wstep on" data-step="1">
+          <fieldset><legend>Mis on vaja teha?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="too" value="Mööbli kokkupanek ja paigaldus"><span class="chip-face">Mööbli kokkupanek ja paigaldus</span></label>
+              <label class="chip"><input type="radio" name="too" value="Köögimööbli paigaldus"><span class="chip-face">Köögimööbli paigaldus</span></label>
+              <label class="chip"><input type="radio" name="too" value="Uste või akende paigaldus"><span class="chip-face">Uste või akende paigaldus</span></label>
+              <label class="chip"><input type="radio" name="too" value="Trepi paigaldus"><span class="chip-face">Trepi paigaldus</span></label>
+              <label class="chip"><input type="radio" name="too" value="Kaupluse või büroo sisustus"><span class="chip-face">Kaupluse või büroo sisustus</span></label>
+              <label class="chip"><input type="radio" name="too" value="Muu töö"><span class="chip-face">Muu</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="wstep" data-step="2">
+          <fieldset><legend>Kui palju?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="maht" value="1 ese"><span class="chip-face">1 ese</span></label>
+              <label class="chip"><input type="radio" name="maht" value="2–5 eset"><span class="chip-face">2–5 eset</span></label>
+              <label class="chip"><input type="radio" name="maht" value="Rohkem kui 5 eset"><span class="chip-face">Rohkem kui 5</span></label>
+              <label class="chip"><input type="radio" name="maht" value="Terve objekt"><span class="chip-face">Terve objekt</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="wstep" data-step="3">
+          <fieldset><legend>Kus?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="koht" value="Kuusalu vald"><span class="chip-face">Kuusalu vald</span></label>
+              <label class="chip"><input type="radio" name="koht" value="Tallinn"><span class="chip-face">Tallinn</span></label>
+              <label class="chip"><input type="radio" name="koht" value="Mujal Harjumaal"><span class="chip-face">Mujal Harjumaal</span></label>
+              <label class="chip"><input type="radio" name="koht" value="Mujal Eestis"><span class="chip-face">Mujal Eestis</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="wstep" data-step="4">
+          <fieldset><legend>Millal?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="aeg" value="Sel nädalal"><span class="chip-face">Sel nädalal</span></label>
+              <label class="chip"><input type="radio" name="aeg" value="Sel kuul"><span class="chip-face">Sel kuul</span></label>
+              <label class="chip"><input type="radio" name="aeg" value="Hiljem"><span class="chip-face">Hiljem</span></label>
+              <label class="chip"><input type="radio" name="aeg" value="Pole veel teada"><span class="chip-face">Pole veel teada</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="wstep" data-step="5">
+          <h3 style="font-size:1.35rem;margin-bottom:14px">Teie päring</h3>
+          <dl class="summary" id="summary"></dl>
+          <div class="acts">
+            <a class="btn btn-blue" id="mail-link" href="mailto:janbraoy@gmail.com?subject=Pakkumise%20p%C3%A4ring">Saada e-kiri</a>
+            <a class="btn btn-ghost" href="tel:+3725243278">Helista</a>
+            <a class="btn btn-ghost" id="sms-link" href="sms:+3725243278">Saada SMS</a>
+          </div>
+          <p class="wiz-note">Lisage kirjale joonised või fotod, siis saame täpsemalt vastata.</p>
+        </div>
+      </div>
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" type="button" id="wiz-back" hidden>Tagasi</button>
+        <button class="btn btn-ink" type="button" id="wiz-next" style="margin-left:auto">Edasi</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="kuidas">
+  <div class="wrap">
+    <p class="mono">Kuidas koostöö käib</p>
+    <h2 class="sec-title">Neli sammu, üks mõõdulint.</h2>
+    <div class="proc rv" id="proc">
+      <div class="tape" aria-hidden="true"></div>
+      <ol class="proc-list">
+        <li class="pstep"><span class="n">01</span><h3>Kirjutate või helistate</h3><p>Kirjeldage tööd, lisage joonis või foto.</p></li>
+        <li class="pstep"><span class="n">02</span><h3>Vaatame üle</h3><p>Täpsustame mahu, materjalid ja tööde järjekorra.</p></li>
+        <li class="pstep"><span class="n">03</span><h3>Lepime aja kokku</h3><p>Päev ja kellaaeg, mis teile sobib.</p></li>
+        <li class="pstep"><span class="n">04</span><h3>Paigaldame</h3><p>Kokkulepitud ajal, iga detail omal kohal.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faktid" style="padding-top:0">
+  <div class="wrap">
+    <ul class="facts">
+      <li class="rv" style="--i:0"><b>2012</b><span>Tegutseme alates</span></li>
+      <li class="rv" style="--i:1"><b>Kuusalu</b><span>Kuusalu vald, Harjumaa</span></li>
+      <li class="rv" style="--i:2"><b>12317110</b><span>Registrikood, JanBra OÜ</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <div class="wrap">
+    <p class="mono">Kontakt</p>
+    <h2 class="sec-title">Räägime teie tööst.</h2>
+    <div class="contact">
+      <div class="ctile rv">
+        <ul class="clist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><a href="tel:+3725243278">+372 524 3278</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg><a href="mailto:janbraoy@gmail.com">janbraoy@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Kuusalu vald, Harjumaa</span></li>
+        </ul>
+      </div>
+      <dl class="ctile req rv" style="--i:1">
+        <div><dt>Ettevõte</dt><dd>JanBra OÜ</dd></div>
+        <div><dt>Registrikood</dt><dd>12317110</dd></div>
+        <div><dt>Juhatuse liige</dt><dd>Janner Braun</dd></div>
+        <div><dt>Tegevusala</dt><dd>Muude ehituspuusepatoodete paigaldus</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <p>© 2026 JanBra OÜ</p>
+  <p>Kontseptsioon — mitteametlik koduleht</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" integrity="sha512-oJ8QbaQThQoJZ7oEv+29jfPM6CcP+zUxh3PKJs1vyOhx0UraUrE7PQgeItu3dOuCJyrzWpoYMsVjkkPEBzbUqw==" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" integrity="sha512-OaIE7ud4P04EhnBuhEcm0wQSceIxbi2pV03oBLS/+F6ampfxsnxcIxOp7H2eF9G7N0kEht0VAzOLG+dTLSo17Q==" crossorigin="anonymous" defer></script>
+<script src="main.js" defer></script>
+</body>
+</html>
