@@ -49,17 +49,18 @@
         .from('#p-door-r', { x: 210, rotation: 8, transformOrigin: '100% 50%', duration: 0.3 }, 0.62)
         .from('#p-hd-l', { x: -260, duration: 0.14 }, 0.9)
         .from('#p-hd-r', { x: 260, duration: 0.14 }, 0.9)
-        .from('#p-dim', { autoAlpha: 0, duration: 0.1 }, 0.94);
+        .from('#p-dim', { autoAlpha: 0, duration: 0.06 }, 0.94);
     };
     /* pealkirjad: kolm lauset kolme faasi peale (mõlemas režiimis) */
-    tl.set('#cap0', { autoAlpha: 1 }, 0)
-      .to('#cap0', { autoAlpha: 0, duration: 0.08 }, 0.3)
-      .fromTo('#cap1', { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.08 }, 0.32)
-      .to('#cap1', { autoAlpha: 0, duration: 0.08 }, 0.64)
-      .fromTo('#cap2', { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.08 }, 0.66);
+    /* seitse sammu samas järjekorras nagu 3D-sceenis; üks samm korraga, ilma kattuvate üleminekuteta */
+    var S = [[0, 0.15], [0.15, 0.28], [0.28, 0.38], [0.38, 0.6], [0.6, 0.69], [0.69, 0.88], [0.88, 1]];
+    tl.set('#cap0', { autoAlpha: 1, y: 0 }, 0);
+    for (var i = 0; i < S.length; i++) {
+      if (i > 0) tl.fromTo('#cap' + i, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.025 }, S[i][0]);
+      if (i < S.length - 1) tl.to('#cap' + i, { autoAlpha: 0, y: -4, duration: 0.02 }, S[i][1] - 0.02);
+    }
     if (want3d) {
-      tl.fromTo('#dim3d', { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.06 }, 0.94)
-        .to({}, { duration: 0.04 }, 1.0); /* sama pikkus kui SVG-variandil */
+      tl.fromTo('#dim3d', { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.06 }, 0.94); /* ajajoon lõpeb täpselt 1.0 peal, nagu 3D-progress */
       /* moodul laaditakse alles pärast load'i, et fondid ja esimene ekraan ees ei ootaks; vana parser ei näe import() süntaksit */
       var dynImport = function (u) { return new Function('u', 'return import(u)')(u); };
       var load3d = function () {
