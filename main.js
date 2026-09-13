@@ -9,6 +9,12 @@
   var hdrH = function () { var hd = document.querySelector('.hdr'); return hd ? Math.round(hd.getBoundingClientRect().height) + 'px' : '0px'; };
 
   /* ---------- 1. Lava: kapp paneb end kokku kerimisel ---------- */
+  /* Kolm režiimi: '3d' (WebGL2 + GSAP), 'svg' (GSAP liigutab SVG-osi), 'static' (ilma JS-ita või reduced-motion). */
+  var box = document.getElementById('cab-box');
+  var webgl2 = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGL2RenderingContext && c.getContext('webgl2')); } catch (e) { return false; } })();
+  var want3d = hasGsap && !reduce && webgl2 && !!box && !(navigator.connection && navigator.connection.saveData);
+  var JB3D = null, lastP = 0;
+  window.JB3DMODE = want3d ? '3d' : (hasGsap && !reduce ? 'svg' : 'static');
   if (hasGsap && !reduce) {
     root.classList.add('gs');
     gsap.registerPlugin(ScrollTrigger);
@@ -21,32 +27,53 @@
       scrollTrigger: {
         trigger: '#lava', start: function () { return 'top ' + hdrH(); }, end: '+=260%', pin: '#stage', scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true,
         onUpdate: function (st) {
+          lastP = st.progress;
           var pct = $('stage-pct'); if (pct) pct.textContent = Math.round(st.progress * 100) + ' %';
           var rf = $('ruler-fill'); if (rf) rf.style.transform = 'scaleX(' + st.progress.toFixed(3) + ')';
+          if (JB3D) JB3D.set(st.progress);
         }
       }
     });
-    /* lahti võetud algseis: karkass tuleb kokku, siis riiulid, siis uksed, siis käepidemed */
-    tl.from('#p-back', { opacity: 0.25, scale: 0.94, transformOrigin: '50% 50%', duration: 0.35 }, 0)
-      .from('#p-side-l', { x: -130, duration: 0.35 }, 0)
-      .from('#p-side-r', { x: 130, duration: 0.35 }, 0)
-      .from('#p-top', { y: mv(-120, -70), duration: 0.35 }, 0.02)
-      .from('#p-bottom', { y: mv(100, 50), duration: 0.35 }, 0.02)
-      .from('#p-plinth', { y: mv(140, 85), duration: 0.35 }, 0.04)
-      .from('#p-shelf1', { x: -170, rotation: -6, transformOrigin: '50% 50%', duration: 0.25 }, 0.36)
-      .from('#p-shelf2', { x: 170, rotation: 6, transformOrigin: '50% 50%', duration: 0.25 }, 0.4)
-      .from('#p-shelf3', { x: -170, rotation: -6, transformOrigin: '50% 50%', duration: 0.25 }, 0.44)
-      .from('#p-door-l', { x: -210, rotation: -8, transformOrigin: '0% 50%', duration: 0.3 }, 0.62)
-      .from('#p-door-r', { x: 210, rotation: 8, transformOrigin: '100% 50%', duration: 0.3 }, 0.62)
-      .from('#p-hd-l', { x: -260, duration: 0.14 }, 0.9)
-      .from('#p-hd-r', { x: 260, duration: 0.14 }, 0.9)
-      .from('#p-dim', { opacity: 0, duration: 0.1 }, 0.94)
-      /* pealkirjad: kolm lauset kolme faasi peale */
-      .set('#cap0', { autoAlpha: 1 }, 0)
+    /* SVG-variant: lahti võetud algseis, karkass tuleb kokku, siis riiulid, uksed, käepidemed */
+    var svgTweens = function () {
+      tl.from('#p-back', { opacity: 0.25, scale: 0.94, transformOrigin: '50% 50%', duration: 0.35 }, 0)
+        .from('#p-side-l', { x: -130, duration: 0.35 }, 0)
+        .from('#p-side-r', { x: 130, duration: 0.35 }, 0)
+        .from('#p-top', { y: mv(-120, -70), duration: 0.35 }, 0.02)
+        .from('#p-bottom', { y: mv(100, 50), duration: 0.35 }, 0.02)
+        .from('#p-plinth', { y: mv(140, 85), duration: 0.35 }, 0.04)
+        .from('#p-shelf1', { x: -170, rotation: -6, transformOrigin: '50% 50%', duration: 0.25 }, 0.36)
+        .from('#p-shelf2', { x: 170, rotation: 6, transformOrigin: '50% 50%', duration: 0.25 }, 0.4)
+        .from('#p-shelf3', { x: -170, rotation: -6, transformOrigin: '50% 50%', duration: 0.25 }, 0.44)
+        .from('#p-door-l', { x: -210, rotation: -8, transformOrigin: '0% 50%', duration: 0.3 }, 0.62)
+        .from('#p-door-r', { x: 210, rotation: 8, transformOrigin: '100% 50%', duration: 0.3 }, 0.62)
+        .from('#p-hd-l', { x: -260, duration: 0.14 }, 0.9)
+        .from('#p-hd-r', { x: 260, duration: 0.14 }, 0.9)
+        .from('#p-dim', { autoAlpha: 0, duration: 0.1 }, 0.94);
+    };
+    /* pealkirjad: kolm lauset kolme faasi peale (mõlemas režiimis) */
+    tl.set('#cap0', { autoAlpha: 1 }, 0)
       .to('#cap0', { autoAlpha: 0, duration: 0.08 }, 0.3)
       .fromTo('#cap1', { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.08 }, 0.32)
       .to('#cap1', { autoAlpha: 0, duration: 0.08 }, 0.64)
       .fromTo('#cap2', { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.08 }, 0.66);
+    if (want3d) {
+      tl.fromTo('#dim3d', { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.06 }, 0.94)
+        .to({}, { duration: 0.04 }, 1.0); /* sama pikkus kui SVG-variandil */
+      /* moodul laaditakse alles pärast load'i, et fondid ja esimene ekraan ees ei ootaks; vana parser ei näe import() süntaksit */
+      var dynImport = function (u) { return new Function('u', 'return import(u)')(u); };
+      var load3d = function () {
+        dynImport('./scene3d.js').then(function (m) { return m.init(box, { mobile: !desktop() }); }).then(function (api) {
+          JB3D = api; window.JB3D = api; api.set(lastP); box.classList.add('is3d');
+        }).catch(function (err) {
+          window.JB3DMODE = 'svg'; svgTweens();
+          if (window.console) console.warn('3D pole saadaval, SVG-variant', err && err.message);
+        });
+      };
+      if (document.readyState === 'complete') setTimeout(load3d, 120); else window.addEventListener('load', function () { setTimeout(load3d, 120); });
+    } else {
+      svgTweens();
+    }
   }
 
   /* ---------- 2. Teenused: lint liigub külgsuunas ainult laual ---------- */
