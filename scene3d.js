@@ -180,7 +180,9 @@ export async function init(box, opts = {}) {
       el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
       el.classList.toggle('left', x > bw * 0.58);
       el.lastChild.textContent = a.p.label;
-      el.style.opacity = a.o.toFixed(2); el.style.visibility = 'visible';
+      /* tekst on kas täiesti nähtav või peidus (kontrast jääb alati korras), ainult punkt hajub */
+      el.firstChild.style.opacity = a.o.toFixed(2); el.lastChild.style.opacity = a.o >= 0.5 ? '1' : '0';
+      el.style.opacity = '1'; el.style.visibility = 'visible';
     }
   };
 
